@@ -38,16 +38,16 @@ function App() {
     data: null
   });
 
-  const [formEditState, setFormEditState] = useState(true)
+  const [formEditState, setFormEditState] = useState("")
 
   const handleConnectivityChange = (online) => {
-    console.log(online);
+    // console.log(online);
 
-    if (online) {
-      setFormEditState(false)
-    } else {
-      setFormEditState(true)
-    }
+    // if (online) {
+    //   setFormEditState(false)
+    // } else {
+    //   setFormEditState(true)
+    // }
   }
 
 
@@ -64,7 +64,13 @@ function App() {
       <Detector
         onChange={handleConnectivityChange}
         render={({ online }) => {
-          console.log({"formEditState": formEditState});
+          
+          if (online) {
+            setFormEditState(false)
+          } else {
+            setFormEditState(true)
+          }
+
           return (
             <div className={online ? "online" : "offline"}>
               You are currently {online ? "online" : "offline"}
