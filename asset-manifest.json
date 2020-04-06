@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/network-management/static/css/main.e5817fe5.chunk.css",
-    "main.js": "/network-management/static/js/main.c573f738.chunk.js",
-    "main.js.map": "/network-management/static/js/main.c573f738.chunk.js.map",
-    "runtime-main.js": "/network-management/static/js/runtime-main.12728b9f.js",
-    "runtime-main.js.map": "/network-management/static/js/runtime-main.12728b9f.js.map",
-    "static/js/2.89a1cdb3.chunk.js": "/network-management/static/js/2.89a1cdb3.chunk.js",
-    "static/js/2.89a1cdb3.chunk.js.map": "/network-management/static/js/2.89a1cdb3.chunk.js.map",
-    "index.html": "/network-management/index.html",
-    "precache-manifest.e17706df5590cf4cd37219468454ed14.js": "/network-management/precache-manifest.e17706df5590cf4cd37219468454ed14.js",
-    "service-worker.js": "/network-management/service-worker.js",
-    "static/css/main.e5817fe5.chunk.css.map": "/network-management/static/css/main.e5817fe5.chunk.css.map",
-    "static/js/2.89a1cdb3.chunk.js.LICENSE.txt": "/network-management/static/js/2.89a1cdb3.chunk.js.LICENSE.txt"
+    "main.css": "/network-connection/static/css/main.e5817fe5.chunk.css",
+    "main.js": "/network-connection/static/js/main.d03fdfb4.chunk.js",
+    "main.js.map": "/network-connection/static/js/main.d03fdfb4.chunk.js.map",
+    "runtime-main.js": "/network-connection/static/js/runtime-main.d91fc5cd.js",
+    "runtime-main.js.map": "/network-connection/static/js/runtime-main.d91fc5cd.js.map",
+    "static/js/2.89a1cdb3.chunk.js": "/network-connection/static/js/2.89a1cdb3.chunk.js",
+    "static/js/2.89a1cdb3.chunk.js.map": "/network-connection/static/js/2.89a1cdb3.chunk.js.map",
+    "index.html": "/network-connection/index.html",
+    "precache-manifest.29407b6b484f09fce0e198c2560b835e.js": "/network-connection/precache-manifest.29407b6b484f09fce0e198c2560b835e.js",
+    "service-worker.js": "/network-connection/service-worker.js",
+    "static/css/main.e5817fe5.chunk.css.map": "/network-connection/static/css/main.e5817fe5.chunk.css.map",
+    "static/js/2.89a1cdb3.chunk.js.LICENSE.txt": "/network-connection/static/js/2.89a1cdb3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.12728b9f.js",
+    "static/js/runtime-main.d91fc5cd.js",
     "static/js/2.89a1cdb3.chunk.js",
     "static/css/main.e5817fe5.chunk.css",
-    "static/js/main.c573f738.chunk.js"
+    "static/js/main.d03fdfb4.chunk.js"
   ]
 }
