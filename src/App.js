@@ -40,16 +40,6 @@ function App() {
 
   const [formEditState, setFormEditState] = useState("")
 
-  const handleConnectivityChange = (online) => {
-    // console.log(online);
-
-    // if (online) {
-    //   setFormEditState(false)
-    // } else {
-    //   setFormEditState(true)
-    // }
-  }
-
 
   const handleInput = async (id) => {
     const queryResult = await client.query({
@@ -59,10 +49,17 @@ function App() {
     setResult(queryResult);
   }
 
+  const pollingObject = {
+    enabled: true,
+    url: "https://ipv4.icanhazip.com",
+    interval: 5000,
+    timeout: 5000
+  }
+
   return (
     <div className="App">
       <Detector
-        onChange={handleConnectivityChange}
+        polling={pollingObject}
         render={({ online }) => {
           
           if (online) {
