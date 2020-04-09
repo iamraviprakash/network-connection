@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Detector } from "react-detect-offline";
 import gql from 'graphql-tag';
-import './App.css';
 import { useApolloClient } from "@apollo/react-hooks";
+import './App.css';
 
 const USER_QUERY = gql`
   query ($id: ID!){
@@ -40,7 +40,6 @@ function App() {
 
   const [formEditState, setFormEditState] = useState("")
 
-
   const handleInput = async (id) => {
     const queryResult = await client.query({
       query: USER_QUERY,
@@ -58,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <Detector
+      {/* <Detector
         polling={pollingObject}
         render={({ online }) => {
           
@@ -69,15 +68,13 @@ function App() {
           }
 
           return (
-            <div className={online ? "online" : "offline"}>
-              You are currently {online ? "online" : "offline"}
-            </div>
+            
           )
         }}
-      />
+      /> */}
 
       {/* Form */}
-      <fieldset className="form" disabled={formEditState}>
+      <fieldset className="form">
         <form>
           <input
             placeholder="What needs to be done?"
