@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Detector } from "react-detect-offline";
 import gql from 'graphql-tag';
 import { useApolloClient } from "@apollo/react-hooks";
 import './App.css';
@@ -38,8 +37,6 @@ function App() {
     data: null
   });
 
-  const [formEditState, setFormEditState] = useState("")
-
   const handleInput = async (id) => {
     const queryResult = await client.query({
       query: USER_QUERY,
@@ -48,31 +45,8 @@ function App() {
     setResult(queryResult);
   }
 
-  const pollingObject = {
-    enabled: true,
-    url: "https://ipv4.icanhazip.com",
-    interval: 5000,
-    timeout: 5000
-  }
-
   return (
     <div className="App">
-      {/* <Detector
-        polling={pollingObject}
-        render={({ online }) => {
-          
-          if (online) {
-            setFormEditState(false)
-          } else {
-            setFormEditState(true)
-          }
-
-          return (
-            
-          )
-        }}
-      /> */}
-
       {/* Form */}
       <fieldset className="form">
         <form>

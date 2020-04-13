@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './NetworkStatus.css';
+import { Detector } from 'react-detect-offline';
 
 class NetworkStatus extends Component {
 
@@ -8,10 +9,22 @@ class NetworkStatus extends Component {
         this.state = {
             isOnline: true
         }
+
         this.handleNetworkError = this.handleNetworkError.bind(this);
+        this.handleNetworkChange = this.handleNetworkChange.bind(this);
     }
 
     componentDidMount() {
+        // Set initial condition
+        if (window.navigator.onLine) {
+            this.setState({
+                isOnline: true
+            });
+        } else {
+            this.setState({
+                isOnline: false
+            });
+        }
         // Add event handler which triggers on network error
         document.addEventListener("network-error", this.handleNetworkError)
     }
@@ -29,16 +42,31 @@ class NetworkStatus extends Component {
         }, 3000);
     }
 
-    render() {
-        if (!this.state.isOnline) {
-            return (
-                <div className="offline">
-                    You are currently offline.
-                </div>
-            );
+    handleNetworkChange(online) {
+        if (online) {
+            this.setState({
+                isOnline: true
+            });
         } else {
-            return null;
+            this.setState({
+                isOnline: false
+            });
         }
+    }
+
+    render() {
+        console.log(`Network status re render & status = ${this.state.isOnline}`);
+        return (
+            <Detector
+                polling={false}
+                onChange={this.handleNetworkChange}
+                render={() => (
+                    this.state.isOnline
+                    ? <div></div>
+                    : <div className="offline">You are currently offline.</div>
+                )}
+            />
+        );
     }
 }
 
