@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './NewNetworkStatus.css';
 import { Detector } from 'react-detect-offline';
 
-class NewNetworkStatus extends Component {
+class NewNetworkStatus extends PureComponent {
 
     constructor(props) {
         super(props);
