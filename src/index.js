@@ -1,25 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from  'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
+import { ApolloProvider } from "react-apollo";
+import { ApolloClient } from "apollo-client";
+import { createHttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { NewNetworkStatus } from './NewNetworkStatus';
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { NetworkStatus } from "./NetworkStatusWithHook";
 
 // Create a custom event for network error
-var event = new CustomEvent('network-error');
+var event = new CustomEvent("network-error");
 
 const errorLink = onError(({ networkError }) => {
-  if (networkError && networkError.statusCode === 401) {  
+  if (networkError && networkError.statusCode === 401) {
     console.log("statuscode");
-  } 
-  
-  if (networkError && networkError.statusCode === undefined) {  
+  }
+
+  if (networkError && networkError.statusCode === undefined) {
     // Trigger the custom event when network error occurs
     console.log(networkError);
     document.dispatchEvent(event);
@@ -28,7 +28,7 @@ const errorLink = onError(({ networkError }) => {
 });
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000'
+  uri: "http://localhost:4000"
 });
 
 const client = new ApolloClient({
@@ -38,10 +38,10 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-      <NewNetworkStatus />
-      <App />
+    <NetworkStatus />
+    <App />
   </ApolloProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

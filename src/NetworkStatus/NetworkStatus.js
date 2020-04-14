@@ -1,73 +1,51 @@
-import React, { Component } from 'react';
-import './NetworkStatus.css';
-import { Detector } from 'react-detect-offline';
+import React, { PureComponent } from "react";
+import "./NetworkStatus.css";
+import { Detector } from "react-detect-offline";
 
-class NetworkStatus extends Component {
+class NetworkStatus extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOnline: window.navigator.onLine ? null : window.navigator.onLine
+    };
+    this.handleNetworkChange = this.handleNetworkChange.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOnline: true
+  handleNetworkChange(isOnline) {
+    this.setState({
+      isOnline
+    });
+  }
+
+  render() {
+    return (
+      <Detector
+        polling={{
+          enabled: true,
+          url: "https://ipv4.icanhazip.com",
+          interval: 5000,
+          timeout: 5000
+        }}
+        onChange={this.handleNetworkChange}
+        render={() =>
+          this.state.isOnline === null ? (
+            " "
+          ) : this.state.isOnline ? (
+            <>
+              <div className="offline-up baseClass">
+                You are currently offline
+              </div>
+              <div className="online baseClass">You are currently online</div>
+            </>
+          ) : (
+            <div className="offline-down baseClass">
+              You are currently offline
+            </div>
+          )
         }
-
-        this.handleNetworkError = this.handleNetworkError.bind(this);
-        this.handleNetworkChange = this.handleNetworkChange.bind(this);
-    }
-
-    componentDidMount() {
-        // Set initial condition
-        if (window.navigator.onLine) {
-            this.setState({
-                isOnline: true
-            });
-        } else {
-            this.setState({
-                isOnline: false
-            });
-        }
-        // Add event handler which triggers on network error
-        document.addEventListener("network-error", this.handleNetworkError)
-    }
-
-    handleNetworkError() {
-        this.setState({
-            isOnline: false
-        });
-
-        // Reset the state after the offline notification shows up
-        setTimeout(() => {
-            this.setState({
-                isOnline: true
-            })
-        }, 3000);
-    }
-
-    handleNetworkChange(online) {
-        if (online) {
-            this.setState({
-                isOnline: true
-            });
-        } else {
-            this.setState({
-                isOnline: false
-            });
-        }
-    }
-
-    render() {
-        console.log(`Network status re render & status = ${this.state.isOnline}`);
-        return (
-            <Detector
-                polling={false}
-                onChange={this.handleNetworkChange}
-                render={() => (
-                    this.state.isOnline
-                    ? <div></div>
-                    : <div className="offline">You are currently offline.</div>
-                )}
-            />
-        );
-    }
+      />
+    );
+  }
 }
 
 export default NetworkStatus;
