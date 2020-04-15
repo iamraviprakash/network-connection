@@ -1,6 +1,7 @@
 import React, { useState, memo } from "react";
 import "./NetworkStatus.css";
 import { Detector } from "react-detect-offline";
+import classnames from "classnames";
 
 function NetworkStatus() {
   const [isOnline, setIsOnline] = useState(
@@ -24,10 +25,26 @@ function NetworkStatus() {
         isOnline === null ? (
           " "
         ) : isOnline ? (
-          <div className="online-up baseClass">You are currently online</div>
+          <div
+            className={classnames(
+              "snackbar__container--up",
+              "snackbar__container"
+            )}
+          >
+            <div className={classnames("snackbar__online", "snackbar")}>
+              You are currently online
+            </div>
+          </div>
         ) : (
-          <div className="offline-down baseClass">
-            You are currently offline
+          <div
+            className={classnames(
+              "snackbar__container--down",
+              "snackbar__container"
+            )}
+          >
+            <div className={classnames("snackbar__offline", "snackbar")}>
+              You are currently offline
+            </div>
           </div>
         )
       }
